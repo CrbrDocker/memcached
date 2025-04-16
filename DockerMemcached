@@ -1,0 +1,15 @@
+FROM crbrdocker/debian:bookworm
+
+COPY --chmod=755 ./install-memcached.sh /install-memcached.sh
+RUN /install-memcached.sh
+RUN rm -f /install-memcached.sh
+
+
+EXPOSE 11211/tcp
+
+ENV MEM=256
+ENV MAXCONN=1000
+
+USER memcache:memcache
+STOPSIGNAL SIGKILL
+CMD memcached -m ${MEM} -c ${MAXCONN}
