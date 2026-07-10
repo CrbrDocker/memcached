@@ -36,7 +36,7 @@ Everything is driven by `.github/workflows/build.yml`:
    `docker buildx imagetools create`.
 5. **cleanup** — prunes untagged GHCR versions.
 
-Triggers: any push to `main`, weekly `cron 23 4 * * 2`, or manual *Run
+Triggers: any push to `main`, weekly `cron 35 8 * * 2`, or manual *Run
 workflow*.
 
 `install-memcached.sh` is copied into the image and run once at build time
