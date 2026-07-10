@@ -37,7 +37,8 @@ Everything is driven by `.github/workflows/build.yml`:
 5. **cleanup** — prunes untagged GHCR versions.
 
 Triggers: any push to `main`, weekly `cron 35 8 * * 2`, or manual *Run
-workflow*.
+workflow* (with a `force` toggle, default on, to build even when the gate sees
+no change).
 
 `install-memcached.sh` is copied into the image and run once at build time
 (`apt-get install memcached` + cleanup); there is nothing else to configure —
