@@ -4,8 +4,8 @@
 #
 # Installs memcached on the crbr Debian base image. Copied into the image and
 # run once at build time (see Dockerfile), then removed. All runtime tuning is
-# done through the MEM / MAXCONN env vars in the Dockerfile CMD, so there is
-# nothing to configure here beyond the package install.
+# done through the MEM / MAXCONN / VERBOSITY env vars in the Dockerfile CMD, so
+# there is nothing to configure here beyond the package install.
 set -euo pipefail
 
 export DEBIAN_FRONTEND=noninteractive

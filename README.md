@@ -12,12 +12,16 @@ previous manual implementation is archived verbatim under `OLD/`.
 docker run --rm -p 11211:11211 crbrdocker/memcached
 ```
 
-Two runtime env vars (passed straight to the `memcached` CMD):
+Runtime env vars (passed straight to the `memcached` CMD):
 
 | Var | Default | Meaning |
 |-----|---------|---------|
 | `MEM` | `256` | max memory (MB) for stored objects |
 | `MAXCONN` | `1000` | max simultaneous connections |
+| `VERBOSITY` | `-v` | logging verbosity (`-vv`/`-vvv` for more, empty to silence) |
+
+memcached logs to **stderr**, so `docker logs` shows them. `-v` covers startup +
+connection events; raise to `-vv`/`-vvv` for per-request detail.
 
 ```
 docker run --rm -p 11211:11211 -e MEM=512 -e MAXCONN=2000 crbrdocker/memcached

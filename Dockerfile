@@ -24,11 +24,14 @@ LABEL org.opencontainers.image.title="memcached" \
 EXPOSE 11211/tcp
 
 # Runtime tuning (override at `docker run` time):
-#   MEM     : max memory (MB) for memcached objects
-#   MAXCONN : max simultaneous connections
+#   MEM       : max memory (MB) for memcached objects
+#   MAXCONN   : max simultaneous connections
+#   VERBOSITY : logging verbosity — -v (default), -vv/-vvv for more, empty to silence.
+#               memcached logs to stderr, so it shows up in `docker logs`.
 ENV MEM=256
 ENV MAXCONN=1000
+ENV VERBOSITY=-v
 
 USER memcache:memcache
 STOPSIGNAL SIGKILL
-CMD memcached -m ${MEM} -c ${MAXCONN}
+CMD memcached -m ${MEM} -c ${MAXCONN} ${VERBOSITY}
